@@ -10,9 +10,6 @@
 //}
 
 package com.school.schoolmanagementsystem.Repository.users;
-
-//import com.school.entity.User;
-//import com.school.entity.Role;
 import com.school.schoolmanagementsystem.Entity.users.User;
 import com.school.schoolmanagementsystem.Enum.Role;
 import org.springframework.data.domain.Page;
@@ -30,17 +27,13 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     boolean existsByEmail(String email);
 
-    // Paginated list of users by role (excluding soft deleted)
     Page<User> findByRoleAndDeletedFalse(Role role, Pageable pageable);
 
-    // Paginated list of all non-deleted users
     Page<User> findByDeletedFalse(Pageable pageable);
 
-    // Find by ID excluding soft deleted
     @Query("SELECT u FROM User u WHERE u.id = :id AND u.deleted = false")
     Optional<User> findActiveById(@Param("id") Long id);
 
-    // Soft delete
     @Modifying
     @Query("UPDATE User u SET u.deleted = true WHERE u.id = :id")
     void softDeleteById(@Param("id") Long id);
