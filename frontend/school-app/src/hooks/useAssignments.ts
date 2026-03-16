@@ -11,7 +11,6 @@ import type {
 import type { PageResponse } from '../types/user';
 import toast from 'react-hot-toast';
 
-// Assignments
 export const useAssignments = (classId?: number, studentId?: number, page = 0) => {
   return useQuery<PageResponse<AssignmentResponse>>({
     queryKey: ['assignments', { classId, studentId, page }],
@@ -72,7 +71,6 @@ export const useDeleteAssignment = () => {
   });
 };
 
-// NEW: Publish assignment
 export const usePublishAssignment = () => {
   const queryClient = useQueryClient();
   return useMutation({
