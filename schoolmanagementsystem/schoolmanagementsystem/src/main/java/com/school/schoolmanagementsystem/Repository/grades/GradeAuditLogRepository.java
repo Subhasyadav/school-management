@@ -1,9 +1,3 @@
-//package com.school.schoolmanagementsystem.Repository;
-//
-//public interface GradeAuditLogRepository {
-//}
-
-
 package com.school.schoolmanagementsystem.Repository.grades;
 
 import com.school.schoolmanagementsystem.Entity.grade.GradeAuditLog;

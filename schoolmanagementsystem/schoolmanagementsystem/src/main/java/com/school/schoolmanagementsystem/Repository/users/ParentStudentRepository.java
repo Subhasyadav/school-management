@@ -1,6 +1,5 @@
 package com.school.schoolmanagementsystem.Repository.users;
 
-//import com.school.entity.ParentStudent;
 import com.school.schoolmanagementsystem.Entity.users.ParentStudent;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

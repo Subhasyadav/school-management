@@ -21,16 +21,12 @@ public interface ClassRoomRepository extends JpaRepository<ClassRoom, Long> {
 
     boolean existsByNameAndAcademicYearAndDeletedFalse(String name, String academicYear);
 
-//    @Modifying
-//    @Query("UPDATE ClassRoom c SET c.deleted = true WHERE c.id = :id")
-//    void softDeleteById(@Param("id") Long id);
 
     @Modifying
     @Query("UPDATE ClassRoom c SET c.deleted = true WHERE c.id = :id")
     void softDeleteById(@Param("id") Long id);
 
     long countByDeletedFalse();
-//    List<ClassRoom> findByTeacherId(Long teacherId); // via class teacher or class subjects (use @Query)
     @Query("SELECT c FROM ClassRoom c WHERE c.classTeacher.id = :teacherId OR c.id IN (SELECT cs.classRoom.id FROM ClassSubject cs WHERE cs.teacher.id = :teacherId)")
     List<ClassRoom> findByTeacherId(@Param("teacherId") Long teacherId);
 }

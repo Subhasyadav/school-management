@@ -1,6 +1,5 @@
 package com.school.schoolmanagementsystem.Repository.users;
 
-//import com.school.entity.Parent;
 import com.school.schoolmanagementsystem.Entity.users.Parent;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,11 +11,9 @@ import java.util.Optional;
 
 public interface ParentRepository extends JpaRepository<Parent, Long> {
 
-    // Find all active (non-deleted) parents with pagination
     @Query("SELECT p FROM Parent p WHERE p.deleted = false")
     Page<Parent> findAllActive(Pageable pageable);
 
-    // Find a specific active parent by ID
     @Query("SELECT p FROM Parent p WHERE p.id = :id AND p.deleted = false")
     Optional<Parent> findActiveById(@Param("id") Long id);
 }

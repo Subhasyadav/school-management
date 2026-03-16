@@ -9,16 +9,12 @@ import org.springframework.data.repository.query.Param;
 
 public interface GradeRepository extends JpaRepository<Grade, Long> {
 
-    // Find grades by student (for student/parent view)
     Page<Grade> findByStudentId(Long studentId, Pageable pageable);
 
-    // Find grades by class (for teacher view)
     Page<Grade> findByClassRoomId(Long classId, Pageable pageable);
 
-    // Find grades by class and subject (filter)
     Page<Grade> findByClassRoomIdAndSubjectId(Long classId, Long subjectId, Pageable pageable);
 
-    // Custom filter using JPQL
     @Query("SELECT g FROM Grade g WHERE " +
             "(:classId IS NULL OR g.classRoom.id = :classId) AND " +
             "(:subjectId IS NULL OR g.subject.id = :subjectId) AND " +

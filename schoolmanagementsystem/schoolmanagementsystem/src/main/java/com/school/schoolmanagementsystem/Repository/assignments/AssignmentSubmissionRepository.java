@@ -40,7 +40,6 @@ import java.util.Optional;
 
 public interface AssignmentSubmissionRepository extends JpaRepository<AssignmentSubmission, Long> {
 
-    // Existing methods
     Optional<AssignmentSubmission> findByAssignmentIdAndStudentId(Long assignmentId, Long studentId);
 
     Page<AssignmentSubmission> findByAssignmentId(Long assignmentId, Pageable pageable);
@@ -56,7 +55,6 @@ public interface AssignmentSubmissionRepository extends JpaRepository<Assignment
     @Query("SELECT AVG(s.grade) FROM AssignmentSubmission s WHERE s.student.id = :studentId AND s.grade IS NOT NULL")
     Double calculateAverageGradeByStudent(@Param("studentId") Long studentId);
 
-    // New methods for versioning and analytics
     Optional<AssignmentSubmission> findByAssignmentIdAndStudentIdOrderByVersionDesc(Long assignmentId, Long studentId);
 
     List<AssignmentSubmission> findAllByAssignmentIdAndStudentIdOrderByVersionDesc(Long assignmentId, Long studentId);

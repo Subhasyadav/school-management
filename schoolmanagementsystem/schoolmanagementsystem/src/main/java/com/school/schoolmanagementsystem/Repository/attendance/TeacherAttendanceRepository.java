@@ -1,9 +1,5 @@
 package com.school.schoolmanagementsystem.Repository.attendance;
 
-//public interface TeacherAttendanceRepository {
-//}
-
-//import com.school.schoolmanagementsystem.Entity.TeacherAttendance;
 import com.school.schoolmanagementsystem.Entity.attendance.TeacherAttendance;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
