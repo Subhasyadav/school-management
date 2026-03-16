@@ -27,6 +27,7 @@ public interface ClassRoomRepository extends JpaRepository<ClassRoom, Long> {
     void softDeleteById(@Param("id") Long id);
 
     long countByDeletedFalse();
+
     @Query("SELECT c FROM ClassRoom c WHERE c.classTeacher.id = :teacherId OR c.id IN (SELECT cs.classRoom.id FROM ClassSubject cs WHERE cs.teacher.id = :teacherId)")
     List<ClassRoom> findByTeacherId(@Param("teacherId") Long teacherId);
 }
