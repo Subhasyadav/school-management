@@ -1,11 +1,5 @@
 package com.school.schoolmanagementsystem.controller;
 
-//import com.school.dto.request.ChangePasswordRequest;
-//import com.school.dto.request.LoginRequest;
-//import com.school.dto.response.MessageResponse;
-//import com.school.dto.response.UserInfoResponse;
-//import com.school.entity.User;
-//import com.school.service.AuthService;
 import com.school.schoolmanagementsystem.DTOs.response.profiles.ChangePasswordRequest;
 import com.school.schoolmanagementsystem.DTOs.response.auths.LoginRequest;
 import com.school.schoolmanagementsystem.DTOs.response.MessageResponse;

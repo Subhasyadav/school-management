@@ -25,7 +25,6 @@ public class GradeController {
 
     private final GradeService gradeService;
 
-    // 5.5.1 GET /grades (filter by class/subject/student) – accessible to Teacher and Admin
     @GetMapping
     @PreAuthorize("hasAnyRole('ADMIN', 'TEACHER')")
     public ResponseEntity<PageResponse<GradeResponse>> getGrades(
@@ -34,7 +33,6 @@ public class GradeController {
         return ResponseEntity.ok(PageResponse.from(gradeService.getGrades(filter, pageable)));
     }
 
-    // 5.5.2 GET /grades/student/{studentId} – accessible to Student, Parent, Teacher, Admin
     @GetMapping("/student/{studentId}")
     @PreAuthorize("hasAnyRole('ADMIN', 'TEACHER') or " +
             "(hasRole('STUDENT') and #studentId == principal.id) or " +
@@ -45,7 +43,6 @@ public class GradeController {
         return ResponseEntity.ok(PageResponse.from(gradeService.getGradesByStudent(studentId, pageable)));
     }
 
-    // 5.5.3 POST /grades – Teacher only
     @PostMapping
     @PreAuthorize("hasRole('TEACHER')")
     public ResponseEntity<GradeResponse> createGrade(@Valid @RequestBody GradeCreateRequest request,

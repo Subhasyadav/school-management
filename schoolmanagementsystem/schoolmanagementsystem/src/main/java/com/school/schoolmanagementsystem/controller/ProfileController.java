@@ -17,14 +17,12 @@ public class ProfileController {
 
     private final UserService userService;
 
-    // 5.7.1 GET /profile – get current user profile
     @GetMapping
     public ResponseEntity<UserResponse> getProfile(@AuthenticationPrincipal User currentUser) {
         // currentUser is already loaded from security context
         return ResponseEntity.ok(userService.getUserById(currentUser.getId()));
     }
 
-    // 5.7.2 PUT /profile – update own profile
     @PutMapping
     public ResponseEntity<UserResponse> updateProfile(@Valid @RequestBody ProfileUpdateRequest request,
                                                       @AuthenticationPrincipal User currentUser) {
